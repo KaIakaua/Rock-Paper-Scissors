@@ -1,0 +1,72 @@
+
+<script>
+    console.log("The script is on");
+    console.log("The script has loaded");
+
+    const textArray = ['Rock','Paper','Scissors' ]; //The options that the computer has
+
+    const Rock = 0;
+    const Paper = 1;
+    const Scissors = 2;
+
+    console.log(textArray + " are the options.");
+
+//So far it works up to here. It has the needed variables for the choices.
+
+    function getComputerChoice(stringArray) {
+        let randomSelect = Math.floor(Math.random()*stringArray.length); //Randomly select one of the options
+        let randomElement = stringArray[randomSelect]; //Return the selected choice.
+        return randomElement;
+    }
+
+    console.log(getComputerChoice(textArray) + " new textArray");
+    const computerSelection = getComputerChoice();
+    console.log(computerSelection + "is the computerSelection");
+    console.log(getComputerChoice() + "is the getComputerChoice");
+    
+
+
+//Now it works all the way over here, properly choosing a random value from the 3 options.
+//And this value is the same inside and outside the function so no confusion made.
+
+
+//-----------------
+
+//Ok so first thing I should do is to remember how to make functions, 
+//then create a function that will randomly return a value from 3 choices.
+//That would be the case but before that I will put the variables right there.
+
+//DONE
+
+//------------------------
+    function getPlayerChoice() {
+        let choice = prompt("Choose Rock, Paper or Scissors:").toLowerCase();
+
+        while (!["rock", "paper", "scissors"].includes(choice)) {
+            choice = prompt("Invalid choice! Choose Rock, Paper or Scissors:").toLowerCase();
+        }
+        console.log(choice + " is the choice");
+    return choice;
+    }
+
+    const playerSelection = getPlayerChoice();
+    console.log(playerSelection + " is the PlayerSelection");
+
+    function playRound(playerSelection, computerSelection) {
+        alert(input);
+    }
+
+
+
+
+
+//Then second thing is to make a function that will play a game of 
+//Rock Paper Scissors with the user, this will happen by letting the user
+//pick one option from those 3 previous values, and then the computer
+//will do the same. 
+//After this is done, a string will return declaring the result of the game
+//and it will be different based in if the user won or lost the game.
+
+
+
+</script>
