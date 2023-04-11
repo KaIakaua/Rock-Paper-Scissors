@@ -1,13 +1,17 @@
-
 <script>
     console.log("The script is on");
     console.log("The script has loaded");
 
+    let userScore = 0;
+    let computerScore = 0;
+
+    console.log("The current score is User = " + userScore + " vs Computer = " + computerScore);
+
     const textArray = ['Rock','Paper','Scissors' ]; //The options that the computer has
 
-    const Rock = 0;
-    const Paper = 1;
-    const Scissors = 2;
+ //   const Rock = 0;
+ //   const Paper = 1;
+ //   const Scissors = 2;
 
     console.log(textArray + " are the options.");
 
@@ -19,10 +23,8 @@
         return randomElement;
     }
 
-    console.log(getComputerChoice(textArray) + " new textArray");
-    const computerSelection = getComputerChoice();
-    console.log(computerSelection + "is the computerSelection");
-    console.log(getComputerChoice() + "is the getComputerChoice");
+    const computerSelection = getComputerChoice(textArray);
+    console.log(computerSelection + " is the computerSelection");
     
 
 
@@ -40,22 +42,83 @@
 
 //------------------------
     function getPlayerChoice() {
-        let choice = prompt("Choose Rock, Paper or Scissors:").toLowerCase();
+        let choice = prompt("Choose Rock, Paper or Scissors:").trim().toLowerCase();
 
         while (!["rock", "paper", "scissors"].includes(choice)) {
-            choice = prompt("Invalid choice! Choose Rock, Paper or Scissors:").toLowerCase();
+            choice = prompt("Invalid choice! Choose Rock, Paper or Scissors:").trim().toLowerCase();
         }
-        console.log(choice + " is the choice");
-    return choice;
+
+        const capitalizedChoice = choice.charAt(0).toUpperCase() +choice.slice(1);
+        console.log(capitalizedChoice + " is your choice");
+    return capitalizedChoice;
     }
 
     const playerSelection = getPlayerChoice();
-    console.log(playerSelection + " is the PlayerSelection");
+//    console.log(playerSelection + " is the PlayerSelection");
 
+// Selection of choices is done, time to tackle onto the interaction between the computer and the user.
+    console.log("Time for the game");
     function playRound(playerSelection, computerSelection) {
-        alert(input);
+       playerSelection = playerSelection.toLowerCase();
+       computerSelection = computerSelection.toLowerCase();
+
+       switch(playerSelection) {
+        case 'rock':
+           switch(computerSelection) {
+              case 'rock': 
+                return "It's a tie!";
+                break;
+              case 'paper':
+                return "Computer wins! Paper beats Rock.";
+                break;
+              case 'scissors': 
+                return "You win! Rock beats Scissors.";
+                break;
+           }
+           break;
+        case 'paper': 
+           switch(computerSelection) {
+              case 'rock': 
+                return "You win! Paper beats Rock.";
+                break;
+              case 'paper': 
+                return "It's a tie!";
+                break;
+              case 'scissors': 
+                return "Computer wins! Scissors beat Paper.";
+                break;
+           }
+           break;
+        case 'scissors':
+            switch(computerSelection) {
+              case 'rock': 
+                return "Computer wins! Rock beats Scissors.";
+                break;
+              case 'paper': 
+                return "You win! Scissors beat Rock";
+                break;
+              case 'scissors': 
+                return "It's a tie";
+                break;
+            }
+        default: 
+            return "Invalid choice";
+            break;
+           }
+       }
+    let result = playRound(playerSelection, computerSelection);
+
+    if (result.includes("You win")) {
+        userScore++;
+    }
+    else if (result.includes("Computer wins")) {
+        computerScore++;
     }
 
+    console.log(result);
+    console.log("The score is currently:");
+    console.log("User: " + userScore + " vs Computer: " + computerScore);
+    console.log("The game is over now");
 
 
 
@@ -66,6 +129,8 @@
 //will do the same. 
 //After this is done, a string will return declaring the result of the game
 //and it will be different based in if the user won or lost the game.
+
+//DONE
 
 
 
